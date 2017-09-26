@@ -1,11 +1,13 @@
 // require twitter npm package
-var twitter = require('twitter');
+var Twitter = require('twitter');
 
 // Use this to request data from OMBD?
 var request = require('request');
 
-// code to store keys in a variable
+// code to store twitterKeys object in a variable
 var keys = require('./keys.js');
+
+var client = new Twitter(keys);
 
 var chooseService = process.argv[2];
 var string = process.argv[3];
@@ -38,15 +40,18 @@ function myTweets() {
 	var params = {
 		screen_name: 'Alice_B_Alice_B'
 	};
-	request.get('statuses/user_timeline', params, function(error, tweets, response) {
+	client.get('statuses/user_timeline', params, function(error, tweets, response) {
   		if (!error) {
-    		console.log(tweets);
+    		console.log(response);
   		}
 	});
 }
+// console.log(text + created_at);
 
-// Request spotify url
-/*request(success_url, function(error, response, track) {
+// 
+/* function spotifyThisSong() {
+Request spotify url
+request(success_url, function(error, response, track) {
 	if (!error && statusCode === 200) {
 		console.log(spotify.track.artists);
 		console.log(spotify.track.name);
@@ -59,7 +64,23 @@ function myTweets() {
 	else if (statusCode !== 200) {
 		console.log('statusCode:', response && response.statusCode);
 	}
-});*/
+});
+}
+// alternative
+function spotifyThisSong() {
+	spotify
+	  .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
+	  .then(function(data) {
+	    console.log(spotify.track.artists);
+		console.log(spotify.track.name);
+		console.log(spotify.track.preview_url);
+		console.log(spotify.track.album); 
+	  })
+	  .catch(function(err) {
+	    console.error('Error occurred: ' + err); 
+	  });
+}
+*/
 
 // Connect to Spotify JSON file
 /*document.curl -X 

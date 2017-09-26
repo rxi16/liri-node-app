@@ -1,9 +1,8 @@
 // twitter package
 var twitter = require('twitter');
+
 // node-spotify-api package
 var spotify = require('node-spotify-api');
-// request package
-var omdb = require('request');
 
 console.log('this is loaded');
 
@@ -23,13 +22,11 @@ var spotify = new Spotify({
   id: '78afd3750dc5428dae64431dd241fe86',
   secret: '4685a7bbdc164b7bb65535184613d6c7'
 });
-spotify
-  .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
-  .then(function(data) {
-    console.log(data); 
-  })
-  .catch(function(err) {
-    console.error('Error occurred: ' + err); 
-  });
 
 module.exports = spotifyKey;*/
+
+// omdb
+/*var omdbKey = {
+  key: 40e9cece;
+};
+module.exports = omdbKey;*/
