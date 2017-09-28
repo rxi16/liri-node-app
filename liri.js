@@ -9,22 +9,25 @@ var keys = require('./keys.js');
 
 var client = new Twitter(keys);
 
+/*var client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});*/
+
 var chooseService = process.argv[2];
 var string = process.argv[3];
 
 // 
 switch (chooseService) {
-  case "my-tweets":
-    myTweets();
+  case "my-tweets": myTweets();
     break;
-  case "spotify-this-song":
-    spotifyThisSong();
+  case "spotify-this-song": spotifyThisSong();
     break;
-  case "movie-this":
-    movieThis();
+  case "movie-this": movieThis();
     break;
-  case "do-what-it-says":
-    doWhatItSays();
+  case "do-what-it-says": doWhatItSays();
     break;
 }
 
@@ -38,14 +41,23 @@ var const_url = 'https://api.spotify.com/v1/search?q=';
 
 function myTweets() {
 	var params = {
-		screen_name: 'Alice_B_Alice_B'
+		screen_name: 'Alice_B_Alice_B',
+		created_at: '',
+		text: ''
 	};
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
   		if (!error) {
-    		console.log(response);
+    		console.log(response[0].text);
+  		}
+  		else if (error) {
+  			console.log("error: " + error, response[0].text);
+  		}
+  		else if (response.statusCode !== 200) {
+  			console.log("response.statusCode: " + response.statusCode);
   		}
 	});
 }
+// eg. request https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=Alice_B_Alice_B&count=20
 // console.log(text + created_at);
 
 // 
