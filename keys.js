@@ -7,9 +7,9 @@ var spotify = require('node-spotify-api');
 console.log('this is loaded');
 
 var twitterKeys = {
-  consumer_key: ' VwM7S7Wh4hQU9kkp0mw3D59qK',
+  consumer_key: 'VwM7S7Wh4hQU9kkp0mw3D59qK',
   consumer_secret: 'jT3r6dvcfoAmOXh5ZtVTh4iE5h86Wf5J0iwHp8IVvZaEjAAlOD',
-  access_token_key: ' 912500399923396609-va77xxZG0bI0d1nq1xbQ7ODZ7V6byZe',
+  access_token_key: '912500399923396609-va77xxZG0bI0d1nq1xbQ7ODZ7V6byZe',
   access_token_secret: 'ZNvWXYuARJLyO6osSOCVLWnzpQOt7Zhmd0hfRiraWQdb2'
 };
 

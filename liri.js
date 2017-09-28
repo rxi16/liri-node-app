@@ -47,16 +47,20 @@ function myTweets() {
 	};
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
   		if (!error) {
-    		console.log(response[0].text);
+    		console.log(tweets[0].text + ' ' + tweets[0].created_at);
   		}
   		else if (error) {
-  			console.log("error: " + error, response[0].text);
+  			console.log("error: " + error);
   		}
   		else if (response.statusCode !== 200) {
   			console.log("response.statusCode: " + response.statusCode);
   		}
 	});
 }
+
+// line of code below copied from npm package twitter documentation
+// client.get(path, params, callback);
+
 // eg. request https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=Alice_B_Alice_B&count=20
 // console.log(text + created_at);
 
